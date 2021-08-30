@@ -8,7 +8,12 @@
             *, *::before, *::after {
                 margin: 0; padding: 0; box-sizing: border-box;
             }
-            .<%=points[0]%> {
+
+            body {
+                background-color: black;
+                height: 100%;
+            }
+            .green {
                 background-color: green;
             }
 
@@ -17,17 +22,69 @@
             }
 
             .bar {
-                background-color: black;
-                height: 100vh;
+                margin: 2rem;
+                padding: 2rem;
+                position: relative;
+                background-color: white;
+                height: 70%;
+            }
+
+            .graph div {
+                position: relative;
+                margin: 0 1rem;
+                /* bottom: 100%; */
+            }
+
+            .graph {
+                height: 100%;
+                border-left: 1px solid black;
+                border-bottom: 1px solid black;
+                display: flex;
+                align-items: flex-end;
+            }
+
+            .graph::before {
+                content: "<%= units %>";
+                position: absolute;
+                left: -0.5rem;
+                top: 50%;
+                transform: rotateZ(-90deg);
+                transform-origin: top;
+            }
+
+            .legend {
+                background-color: cornflowerblue;
+                position: absolute;
+                top: 1rem;
+                right: 5rem;
+                padding: 1rem;
+            }
+            .legend ul {
+                
+                list-style: none;
             }
         </style>
     </head>
     <body>
     
         <div class="<%=graph %>">
-            <% points.forEach((point) => { %>
-                <div class="<%= point.color %>"><%= point.name %>: $<%= point.value %></div>
-            <% }); %>
+            <div class="legend">
+                <h3>Legend</h3>
+                <hr>
+                <ul>
+                    <% points.forEach((point) => { %>
+                        <li><%= point.name %>: <%= point.color %></li>
+                    <% }); %>
+                </ul>
+            </div>
+            <div class="graph">
+                <% points.forEach((point) => { %>
+                    <div 
+                        class="<%= point.color %>"
+                        style="height: <%= point.value %>%; width: 50px;"
+                    ></div>
+                <% }); %>
+            </div>
         </div>
     
     </body>

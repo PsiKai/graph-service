@@ -11,8 +11,8 @@ app.set('view engine', "ejs")
 
 app.get("/", (req, res) => {
     const {body: {data}, headers: {cookie}} = req
-    const {graph, points} = data
-    ejs.renderFile("./views/graph.ejs", {points, graph}, (err, html) => {
+    const {graph, points, units} = data
+    ejs.renderFile("./views/graph.ejs", {points, graph, units}, (err, html) => {
         if (err) console.log(err);
         res.send(html)
     })
