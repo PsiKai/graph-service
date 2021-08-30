@@ -4,66 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/graph.css">
-        <style>
-            *, *::before, *::after {
-                margin: 0; padding: 0; box-sizing: border-box;
-            }
-
-            body {
-                background-color: black;
-                height: 100%;
-            }
-            .green {
-                background-color: green;
-            }
-
-            .red {
-                background-color: red;
-            }
-
-            .bar {
-                margin: 2rem;
-                padding: 2rem;
-                position: relative;
-                background-color: white;
-                height: 70%;
-            }
-
-            .graph div {
-                position: relative;
-                margin: 0 1rem;
-                /* bottom: 100%; */
-            }
-
-            .graph {
-                height: 100%;
-                border-left: 1px solid black;
-                border-bottom: 1px solid black;
-                display: flex;
-                align-items: flex-end;
-            }
-
-            .graph::before {
-                content: "<%= units %>";
-                position: absolute;
-                left: -0.5rem;
-                top: 50%;
-                transform: rotateZ(-90deg);
-                transform-origin: top;
-            }
-
-            .legend {
-                background-color: cornflowerblue;
-                position: absolute;
-                top: 1rem;
-                right: 5rem;
-                padding: 1rem;
-            }
-            .legend ul {
-                
-                list-style: none;
-            }
-        </style>
+        <%- include("partials/style") %>
     </head>
     <body>
     
@@ -81,7 +22,7 @@
                 <% points.forEach((point) => { %>
                     <div 
                         class="<%= point.color %>"
-                        style="height: <%= point.value %>%; width: 50px;"
+                        style="height: calc(100% * (<%= point.value %> / <%= scale %>)); width: 50px;"
                     ></div>
                 <% }); %>
             </div>

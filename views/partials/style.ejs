@@ -1,0 +1,72 @@
+<style>
+
+*, *::before, *::after {
+    margin: 0; padding: 0; box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+}
+
+.green {
+    background-color: green;
+}
+
+.red {
+    background-color: red;
+}
+
+.bar {
+    margin: 2rem;
+    padding: 2rem;
+    position: relative;
+    background-color: white;
+    height: 70%;
+    max-width: 500px;
+}
+
+.graph div {
+    position: relative;
+    margin-left: 2rem;
+}
+
+.graph {
+    height: 100%;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    display: flex;
+    align-items: flex-end;
+    padding-left: 1rem;
+}
+
+.graph::before {
+    content: "<%= units %>";
+    position: absolute;
+    left: -0.5rem;
+    top: 50%;
+    transform: rotateZ(-90deg);
+    transform-origin: top;
+    text-transform: capitalize;
+}
+
+.graph::after {
+    content: "<%= scale %>";
+    position: absolute;
+    top: 2rem;
+    left: 2.5rem;
+}
+
+.legend {
+    background-color: cornflowerblue;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 1rem;
+}
+.legend ul {
+    
+    list-style: none;
+}
+
+            
+</style>
