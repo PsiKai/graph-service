@@ -21,6 +21,7 @@
             <div class="graph">
                 <% points.forEach((point) => { %>
                     <div 
+                        data-value="<%= point.value %>"
                         class="<%= point.color %>"
                         style="height: calc(100% * (<%= point.value %> / <%= scale %>)); width: 50px;"
                     ></div>

@@ -6,10 +6,14 @@
 
 body {
     background-color: black;
+    font-family: sans-serif;
 }
 
 .green {
     background-color: green;
+}
+
+.green:hover::before {
 }
 
 .red {
@@ -28,6 +32,15 @@ body {
 .graph div {
     position: relative;
     margin-left: 2rem;
+}
+
+.graph div::after {
+    content: attr(data-value);
+    font-weight: bold;
+    position: absolute;
+    background-color: blue;
+    color: white;
+    bottom: 0;
 }
 
 .graph {
