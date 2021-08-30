@@ -23,34 +23,15 @@ app.post("/", (req, res) => {
         return total
     }, 0) 
 
-    const getScale = () => {
-        const magnitude = Math.round(greatestValue).toString().length
-        switch (magnitude) {
-            case 1:
-                return 10;
-            case 2:
-                return 100;
-            case 3: 
-                if (greatestValue / 2 < 100) {
-                    return 200
-                } else if (greatestValue / 2 < 150) {
-                    return 300
-                } else if (greatestValue / 2 < 200) {
-                    return 400
-                } else if (greatestValue / 2 < 250) {
-                    return 500
-                } else if (greatestValue / 2 < 300) {
-                    return 600
-                }
-                return 1000;
-            default:
-                return;
-        }
+    const {getScale} = require("./utils/scale.js")
+
+    console.log(getScale(greatestValue));
+
+    const graphParams = {
+        points, graph, units, scale: getScale(greatestValue), title
     }
 
-    console.log(getScale());
-
-    ejs.renderFile("./views/graph.ejs", {points, graph, units, scale: getScale(), title}, (err, html) => {
+    ejs.renderFile("./views/graph.ejs", graphParams, (err, html) => {
         if (err) console.log(err);
         res.send(html)
     })
