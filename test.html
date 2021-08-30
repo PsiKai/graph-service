@@ -4,7 +4,6 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="css/graph.css">
 	<style>
 		*,
 		*::before,
@@ -76,8 +75,8 @@
 		.graph::after {
 			content: "200";
 			position: absolute;
-			top: 2rem;
-			left: 2.5rem;
+			top: 6rem;
+			left: 4.5rem;
 		}
 
 		.legend {
@@ -92,6 +91,11 @@
 
 			list-style: none;
 		}
+
+		.legend span {
+			height: 32px;
+			width: 32px;
+		}
 	</style>
 </head>
 
@@ -104,9 +108,15 @@
 			<hr>
 			<ul>
 
-				<li>Quarterly Earnings: green</li>
+				<li>
+					<span style='background-color: green;'></span>
+					Quarterly Earnings: 127.43
+				</li>
 
-				<li>Quarterly Losses: red</li>
+				<li>
+					<span style='background-color: red;'></span>
+					Quarterly Losses: 77.23
+				</li>
 
 			</ul>
 		</div>

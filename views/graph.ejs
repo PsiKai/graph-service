@@ -3,7 +3,6 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/graph.css">
         <%- include("partials/style") %>
     </head>
     <body>
@@ -15,7 +14,9 @@
                 <hr>
                 <ul>
                     <% points.forEach((point) => { %>
-                        <li><%= point.name %>: <%= point.color %></li>
+                        <li>
+                            <span style='background-color: <%= point.color %>;'></span><%= point.name %>: <%= point.value %>
+                        </li>
                     <% }); %>
                 </ul>
             </div>

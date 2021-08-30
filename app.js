@@ -19,9 +19,7 @@ app.post("/", (req, res) => {
     const {graph, points, units, title} = data
 
     const greatestValue = points.reduce((total, {value}) => {
-        if (total === 0 || value > total) {
-            total = value
-        }
+        if (value > total) total = +value
         return total
     }, 0) 
 

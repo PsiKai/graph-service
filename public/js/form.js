@@ -1,16 +1,17 @@
 const addDataPoint = () => {
     const dataDiv = document.querySelector(".data-collection")
-    const newInput = 
-        `<div>
+    const newInput = document.createElement("div")
+    newInput.innerHTML =
+        `
             <label for="data-point">Data Point</label>
             <input id="data-point" name="name" type="text" />
             <label for="data-value">Data Value</label>
-            <input id="data-value" name="value" type="text" />
+            <input id="data-value" name="value" type="number" step="0.01"/>
             <label for="value">Data Point</label>
             <input id="value" name="value" type="color" />
-        </div>`
+        `
 
-    dataDiv.innerHTML += newInput
+    dataDiv.appendChild(newInput)
 }
 
 
@@ -51,7 +52,9 @@ const getGraph = (e) => {
                 body: JSON.stringify(reqObj)
             })
             const markup = await res.text()
-            console.log(markup);
+            const currentGraph = document.querySelector("iframe")
+
+            if (currentGraph) body.removeChild(currentGraph)
 
             const frame = document.createElement("iframe")
             body.appendChild(frame)
