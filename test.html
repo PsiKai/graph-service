@@ -1,136 +1,127 @@
 <!DOCTYPE html>
-<html lang="en">
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<style>
-		*,
-		*::before,
-		*::after {
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-		}
-
-		body {
-			background-color: black;
-			font-family: sans-serif;
-		}
-
-		/* .green {
-    background-color: green;
+*, *::before, *::after {
+    margin: 0; padding: 0; box-sizing: border-box;
 }
 
-.green:hover::before {
+body {
+    background-color: black;
+    font-family: sans-serif;
 }
 
-.red {
-    background-color: red;
-} */
+.bar {
+    margin: 2rem;
+    padding: 2rem;
+    position: relative;
+    background-color: white;
+    height: 90%;
+    max-width: 500px;
+}
 
-		.bar {
-			margin: 2rem;
-			padding: 2rem;
-			position: relative;
-			background-color: white;
-			height: 90%;
-			max-width: 500px;
-		}
+.graph div {
+    position: relative;
+    margin-left: 2rem;
+}
 
-		.graph div {
-			position: relative;
-			margin-left: 2rem;
-		}
+.graph div::after {
+    content: attr(data-value);
+    font-weight: bold;
+    position: absolute;
+    background-color: blue;
+    color: white;
+    bottom: 0;
+}
 
-		.graph div::after {
-			content: attr(data-value);
-			font-weight: bold;
-			position: absolute;
-			background-color: blue;
-			color: white;
-			bottom: 0;
-		}
+.graph {
+    height: 300px;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    display: flex;
+    align-items: flex-end;
+    padding-left: 1rem;
+    margin: 2rem;
+}
 
-		.graph {
-			height: 300px;
-			border-left: 1px solid black;
-			border-bottom: 1px solid black;
-			display: flex;
-			align-items: flex-end;
-			padding-left: 1rem;
-			margin: 2rem;
-		}
+.graph::before {
+    content: "dollars";
+    position: absolute;
+    left: -0.5rem;
+    top: 50%;
+    transform: rotateZ(-90deg);
+    transform-origin: top;
+    text-transform: capitalize;
+}
 
-		.graph::before {
-			content: "dollars";
-			position: absolute;
-			left: -0.5rem;
-			top: 50%;
-			transform: rotateZ(-90deg);
-			transform-origin: top;
-			text-transform: capitalize;
-		}
+.graph::after {
+    content: "";
+    position: absolute;
+    top: 6rem;
+    left: 4.5rem;
+}
 
-		.graph::after {
-			content: "200";
-			position: absolute;
-			top: 6rem;
-			left: 4.5rem;
-		}
+.legend {
+    background-color: cornflowerblue;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 1rem;
+}
+.legend ul {
+    
+    list-style: none;
+}
 
-		.legend {
-			background-color: cornflowerblue;
-			position: absolute;
-			top: 1rem;
-			right: 1rem;
-			padding: 1rem;
-		}
+.legend span {
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+}
 
-		.legend ul {
-
-			list-style: none;
-		}
-
-		.legend span {
-			height: 32px;
-			width: 32px;
-		}
-	</style>
-</head>
-
-<body>
-
-	<div class="bar">
-		<h1>Q2 Revenue</h1>
-		<div class="legend">
-			<h3>Legend</h3>
-			<hr>
-			<ul>
-
-				<li>
-					<span style='background-color: green;'></span>
-					Quarterly Earnings: 127.43
-				</li>
-
-				<li>
-					<span style='background-color: red;'></span>
-					Quarterly Losses: 77.23
-				</li>
-
-			</ul>
-		</div>
-		<div class="graph">
-
-			<div data-value="127.43" data-color=class="green"
-				style="height: calc(100% * (127.43 / 200)); width: 50px; background-color: green"></div>
-
-			<div data-value="77.23" data-color=class="red"
-				style="height: calc(100% * (77.23 / 200)); width: 50px; background-color: red"></div>
-
-		</div>
-	</div>
-
-</body>
-
-</html>
+            
+</style>
+    </head>
+    <body>
+    
+        <div class="bar">
+            <h1>Q2 Revenue</h1>
+            <div class="legend">
+                <h3>Legend</h3>
+                <hr>
+                <ul>
+                    
+                        <li>
+                            <span style='background-color: green;'></span>Quarterly Earnings: 6766.43
+                        </li>
+                    
+                        <li>
+                            <span style='background-color: red;'></span>Quarterly Losses: 3325.23
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="graph">
+                
+                    <div 
+                        data-value="6766.43"
+                        data-color=
+                        class="green"
+                        style="height: calc(100% * (6766.43 / )); width: 50px; background-color: green"
+                    ></div>
+                
+                    <div 
+                        data-value="3325.23"
+                        data-color=
+                        class="red"
+                        style="height: calc(100% * (3325.23 / )); width: 50px; background-color: red"
+                    ></div>
+                
+            </div>
+        </div>
+    
+    </body>
+    </html>
