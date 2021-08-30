@@ -8,26 +8,15 @@ app.use(express.json())
 
 app.set('view engine', "ejs")
 
-const port = process.env.PORT || 3000
-
-const parseData = (data) => {
-    const {graph, points} = data
-
-    const pointMap = points.map(point => `<div>${point.name}: ${point.value}</div>`)
-
-        console.log(points, pointMap);
-
-    return 
-}
 
 app.get("/", (req, res) => {
     const {body: {data}, headers: {cookie}} = req
     const {graph, points} = data
-    // res.json({msg: "Ping!", cookie, data})
-    res.render("graph", {
-        points,
-        graph
+    ejs.renderFile("./views/graph.ejs", {points, graph}, (err, html) => {
+        if (err) console.log(err);
+        res.send(html)
     })
 })
 
+const port = process.env.PORT || 3000
 app.listen(port, () => console.log("Your server is running on port 3000"))

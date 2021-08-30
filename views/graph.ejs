@@ -3,12 +3,30 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/graph.css">
+        <style>
+            *, *::before, *::after {
+                margin: 0; padding: 0; box-sizing: border-box;
+            }
+            .<%=points[0]%> {
+                background-color: green;
+            }
+
+            .red {
+                background-color: red;
+            }
+
+            .bar {
+                background-color: black;
+                height: 100vh;
+            }
+        </style>
     </head>
     <body>
     
-        <div class=<%=graph %>>
+        <div class="<%=graph %>">
             <% points.forEach((point) => { %>
-                <div class= <%= point.color %>}><%= point.name %>: <%= point.value %></div>
+                <div class="<%= point.color %>"><%= point.name %>: $<%= point.value %></div>
             <% }); %>
         </div>
     
