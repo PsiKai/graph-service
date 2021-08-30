@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph</title>
+    <link rel="stylesheet" href="styles/form.css">
+</head>
+<body>
+    <form class="graph-form" onsubmit="getGraph(event)">
+        <label for="title">Title</label>
+        <input id="title" name="title" type="text" />
+        <label for="graph">Which Graph</label>
+        <select>
+            <option value="bar">Bar</option>
+        </select>
+        <label for="units">Data Units</label>
+        <input id="units" name="units" type="text" />
+        <div class="data-collection">
+            <div>
+                <label for="data-point">Data Point</label>
+                <input id="data-point" name="name" type="text" />
+
+                <label for="data-value">Data Value</label>
+                <input id="data-value" name="value" type="text" />
+
+                <label for="data-color">Data Color</label>
+                <input id="data-color" name="value" type="color" />
+            </div>
+        </div>
+        <button type="submit">Get Graph!</button>
+    </form>
+    <button onclick="addDataPoint()">Add Data Point</button>
+    <script type="text/javascript" src="js/form.js"></script>
+</body>
+</html>
+
+<!-- action="/" method="POST" enctype="application/x-www-form-urlencoded"  -->

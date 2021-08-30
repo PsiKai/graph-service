@@ -9,6 +9,7 @@
     <body>
     
         <div class="<%=graph %>">
+            <h1><%= title %></h1>
             <div class="legend">
                 <h3>Legend</h3>
                 <hr>
@@ -22,8 +23,9 @@
                 <% points.forEach((point) => { %>
                     <div 
                         data-value="<%= point.value %>"
+                        data-color=
                         class="<%= point.color %>"
-                        style="height: calc(100% * (<%= point.value %> / <%= scale %>)); width: 50px;"
+                        style="height: calc(100% * (<%= point.value %> / <%= scale %>)); width: 50px; background-color: <%= point.color %>"
                     ></div>
                 <% }); %>
             </div>

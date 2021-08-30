@@ -5,10 +5,18 @@ const app = express()
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json())
+app.use(express.static(__dirname + '/public'));
+
+app.set('view engine', "ejs");
 
 app.get("/", (req, res) => {
+    res.render("form")
+})
+
+app.post("/", (req, res) => {
     const {data} = req.body
-    const {graph, points, units} = data
+    console.log(data);
+    const {graph, points, units, title} = data
 
     const greatestValue = points.reduce((total, {value}) => {
         if (total === 0 || value > total) {
@@ -44,7 +52,7 @@ app.get("/", (req, res) => {
 
     console.log(getScale());
 
-    ejs.renderFile("./views/graph.ejs", {points, graph, units, scale: getScale()}, (err, html) => {
+    ejs.renderFile("./views/graph.ejs", {points, graph, units, scale: getScale(), title}, (err, html) => {
         if (err) console.log(err);
         res.send(html)
     })
