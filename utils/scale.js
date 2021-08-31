@@ -24,4 +24,5 @@ const getScale = (greatestValue) => {
     return scale
 }
 
+
 module.exports = {getScale}

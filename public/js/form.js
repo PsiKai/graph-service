@@ -21,7 +21,6 @@ const getGraph = (e) => {
     const inputs = Array.from(e.target.querySelectorAll("input"))
     const dataPoints = Array.from(document.querySelector(".data-collection").children)
     const body = document.querySelector("body")
-    // console.log(graph, inputs, dataPoints);
 
     const reqObj = {
         "data": {
@@ -38,8 +37,6 @@ const getGraph = (e) => {
             })
         } 
     }
-
-    // console.log(JSON.stringify(reqObj));
 
     const callAPI = async () => {
         try {
@@ -67,12 +64,4 @@ const getGraph = (e) => {
     }
 
     callAPI();
-
-    // const formElements = Array.from(e.target.children)
-    // formElements.forEach((elem) => {
-    //     if (elem.name) console.log(elem.name, elem.value);
-    // })
-
-    // const dataCollection = document.querySelector(".data-collection")
-    // console.log(dataCollection);
 }
