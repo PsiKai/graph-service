@@ -10,28 +10,25 @@ app.use(express.static(__dirname + '/public'));
 app.set('view engine', "ejs");
 
 app.get("/", (req, res) => {
-    res.render("form")
+    res.render("pages/form")
 })
 
 app.post("/", (req, res) => {
-    const {data} = req.body
-    console.log(data);
-    const {graph, points, units, title} = data
+    const { data } = req.body
+    const { graph } = data
+    let graphParams
 
-    const greatestValue = points.reduce((total, {value}) => {
-        if (value > total) total = +value
-        return total
-    }, 0) 
-
-    const {getScale} = require("./utils/scale.js")
-
-    console.log(getScale(greatestValue));
-
-    const graphParams = {
-        points, graph, units, scale: getScale(greatestValue), title
+    switch (graph) {
+        case "bar":
+            const { barGraph } = require("./graphs/bargraph.js")
+            graphParams = barGraph(data)
+            break;   
+        default:
+            res.status(400).json({msg: "No graph style received"})
+            break;
     }
 
-    ejs.renderFile("./views/graph.ejs", graphParams, (err, html) => {
+    ejs.renderFile(`./views/pages/${graph}-graph.ejs`, graphParams, (err, html) => {
         if (err) console.log(err);
         res.send(html)
     })

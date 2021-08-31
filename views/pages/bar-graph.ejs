@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <%- include("partials/style") %>
+        <%- include("../partials/styles/bar-styles") %>
     </head>
     <body>
     
@@ -24,8 +24,10 @@
                 <% points.forEach((point) => { %>
                     <div 
                         data-value="<%= point.value %>"
-                        class="<%= point.color %>"
-                        style="height: calc(100% * (<%= point.value %> / <%= scale %>)); width: 50px; background-color: <%= point.color %>"
+                        style=
+                            "height: calc(100% * (<%= point.value %> / <%= scale %>)); 
+                            width: 50px; 
+                            background-color: <%= point.color %>"
                     ></div>
                 <% }); %>
             </div>
